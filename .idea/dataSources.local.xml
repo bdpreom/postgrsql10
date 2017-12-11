@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="dcrc@192.168.4.176" uuid="f6909906-3996-44b3-a97e-80038c1d55d9">
+      <database-info product="PostgreSQL" version="10.0" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.1.1">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>dcrc</user-name>
+      <introspection-schemas>dcrc:dcrc</introspection-schemas>
+    </data-source>
+  </component>
+</project>

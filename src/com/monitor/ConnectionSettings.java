@@ -24,6 +24,7 @@ public class ConnectionSettings {
                 "ORDER BY context, name;";
 
 
+
         try{
             dbConnection = getDBConnection();
             statement = dbConnection.createStatement();
@@ -31,6 +32,10 @@ public class ConnectionSettings {
             System.out.println(connectionSQL);
             // execute select SQL stetement
             ResultSet rs1 = statement.executeQuery(connectionSQL);
+
+
+
+
 
             while (rs1.next()) {
 
@@ -42,11 +47,15 @@ public class ConnectionSettings {
                 String reset_val = rs1.getString("reset_val");
 
 
+
+
                 System.out.println("name : " + name +" ++ " +"context:" + context + "++" +  "  " +"unit:" +unit);
                 System.out.println("setting : " + setting);
                 System.out.println("boot_val : " + boot_val );
                 System.out.println("reset_val : " + reset_val);
+
             }
+
 
         }
 
