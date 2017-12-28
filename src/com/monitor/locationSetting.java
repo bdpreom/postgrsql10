@@ -1,49 +1,39 @@
 package com.monitor;
 
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 import static com.monitor.Main.getDBConnection;
 
-public class Oid {
+public class locationSetting {
 
-    public static void oid() throws SQLException {
-
+    public static void fileLocations() throws SQLException {
 
         java.sql.Connection dbConnection = null;
         Statement statement = null;
 
+        //Query 1 : Finding file locations
 
-        // finding connection settings
-        String oidSQL = "SELECT oid, relname FROM pg_class WHERE relkind = 'r' \n" +
-                "AND relname NOT LIKE 'pg_%' AND relname NOT LIKE 'sql_%';";
-
+        String selectTableSQL = "SELECT name, setting FROM pg_settings WHERE category = 'File Locations' ORDER BY name;";
 
 
         try{
             dbConnection = getDBConnection();
             statement = dbConnection.createStatement();
 
-            System.out.println(oidSQL);
+            System.out.println(selectTableSQL);
             // execute select SQL stetement
-            ResultSet rs7 = statement.executeQuery(oidSQL);
-            System.out.println(rs7);
+            ResultSet rs = statement.executeQuery(selectTableSQL);
 
+            while (rs.next()) {
 
+                String name = rs.getString("name");
+                String setting = rs.getString("setting");
 
-
-
-            while (rs7.next()) {
-
-                String oid = rs7.getString("oid");
-                String relname = rs7.getString("relname");
-
-
-                System.out.println("oid: " +oid);
-                System.out.println("relname:" +relname);
-
-
+                System.out.println("name : " + name);
+                System.out.println("settings : " + setting);
 
             }
 
@@ -54,6 +44,9 @@ public class Oid {
         catch (SQLException e){
             System.out.println(e.getMessage());
         }
+
+
+
 
         finally {
 
@@ -67,8 +60,6 @@ public class Oid {
 
         }
 
-
-
-
     }
+
 }
